@@ -28,6 +28,13 @@ header .nav-container-logo {
   padding: 22px 0 12px;
   box-shadow: 0 2px 5px silver;
   background-color: white;
+  position: relative;
+}
+header .nav-container-logo .fa-arrow-left {
+  font-size: 20px;
+  position: absolute;
+  left: 23px;
+  top: 25px;
 }
 header .nav-container-logo .logo {
   width: 165px;
@@ -181,7 +188,6 @@ main {
 
 .image-intro-container {
   height: 260px;
-  flex: 1;
 }
 .image-intro-container .image-intro {
   height: 100%;

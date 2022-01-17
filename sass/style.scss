@@ -13,6 +13,7 @@ a {
     color:#000;
 }
 
+
 body {
     width: 375px;
     margin: 0 auto;
@@ -27,9 +28,18 @@ header {
         padding: 22px 0 12px;
         box-shadow: 0 2px 5px silver;
         background-color: white;
+        position: relative;
+
+        .fa-arrow-left {
+            font-size: 20px;
+            position: absolute;
+            left: 23px;
+            top: 25px;
+        }
 
         .logo {
             width: 165px;
+            
             
         }
     }
@@ -238,7 +248,7 @@ main {
 
 .image-intro-container {
     height: 260px;
-    flex: 1;
+    
     
 
     .image-intro {
