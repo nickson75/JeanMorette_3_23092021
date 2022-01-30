@@ -9,14 +9,88 @@
   /*effet de transition appliqué sur toutes les propriétés de toutes les balises*/
 }
 
+.icone {
+  color: grey;
+}
+
+.fa-mobile-alt {
+  font-size: 20px;
+}
+
 a {
   text-decoration: none;
   color: #000;
 }
 
 body {
-  width: 375px;
   margin: 0 auto;
+  font-family: "Roboto", sans-serif;
+}
+
+h1 {
+  font-size: 24px;
+}
+
+.page-menu h1 {
+  font-family: "Shrikhand", cursive;
+  font-size: 28px;
+}
+
+h2 {
+  font-weight: 600;
+  font-size: 22px;
+}
+
+.page-menu h2 {
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+.page-menu h3 {
+  font-size: 16px;
+}
+
+p {
+  font-size: 16px;
+}
+
+.page-menu p {
+  font-size: 14px;
+}
+
+.prix {
+  font-weight: 600;
+}
+
+.container-prix {
+  display: flex;
+  align-items: flex-end;
+}
+
+hr {
+  width: 40px;
+  border: 2px solid #99E2D0;
+  margin-top: 5px;
+}
+
+.button {
+  margin: 35px auto 0;
+  background: linear-gradient(#FF79DA, #9356DC);
+  padding: 20px 18px;
+  border-radius: 30px;
+  width: 220px;
+  text-align: center;
+  box-shadow: 0 2px 5px silver;
+}
+.button span {
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
 }
 
 header {
@@ -69,17 +143,6 @@ header .bloc-localisation .container-ville ::placeholder {
 .bloc-presentation div:nth-child(2) {
   margin-top: 20px;
 }
-.bloc-presentation a div {
-  margin: 35px auto 0;
-  background-color: purple;
-  padding: 20px 18px;
-  border-radius: 30px;
-  width: 220px;
-}
-.bloc-presentation a div span {
-  color: white;
-  font-size: 1.25rem;
-}
 
 .bloc-fonctionnement {
   padding: 50px 20px 65px;
@@ -90,11 +153,10 @@ header .bloc-localisation .container-ville ::placeholder {
   gap: 20px;
 }
 .bloc-fonctionnement nav .fonctionnement-vignette {
-  width: 325px;
   height: 72px;
   border-radius: 15px;
   box-shadow: 0 5px 15px -5px silver;
-  margin-left: auto;
+  margin-left: 13px;
   display: flex;
   align-items: center;
   position: relative;
@@ -119,6 +181,13 @@ header .bloc-localisation .container-ville ::placeholder {
   flex-basis: 75px;
   justify-content: center;
 }
+.bloc-fonctionnement nav .fonctionnement-vignette:hover {
+  background-color: #F6F6F6;
+  background-color: #f2eafb;
+}
+.bloc-fonctionnement nav .fonctionnement-vignette:hover .icone {
+  color: #9356DC;
+}
 
 .bloc-restaurants {
   padding: 55px 20px 65px;
@@ -134,6 +203,7 @@ header .bloc-localisation .container-ville ::placeholder {
   flex-direction: column;
   height: 251px;
   border-radius: 10px;
+  position: relative;
 }
 .bloc-restaurants .restaurants-grid-cards .restaurant-card .restaurant-card-container-img {
   height: calc(100% - 77px);
@@ -152,12 +222,15 @@ header .bloc-localisation .container-ville ::placeholder {
   height: 77px;
   background-color: white;
   display: flex;
-  padding: 20px 14px;
+  padding: 17px 14px;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
 .bloc-restaurants .restaurants-grid-cards .restaurant-card .restaurant-card-container-info .restaurant-card-info-container-text {
   flex: 6;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .bloc-restaurants .restaurants-grid-cards .restaurant-card .restaurant-card-container-info .restaurant-card-info-container-like {
   flex: 1;
@@ -165,20 +238,52 @@ header .bloc-localisation .container-ville ::placeholder {
   align-items: center;
   justify-content: center;
 }
+.bloc-restaurants .restaurants-grid-cards .restaurant-card .restaurant-card-container-info .restaurant-card-info-container-like .fa-heart {
+  font-size: 25px;
+  font-weight: 100;
+}
+.bloc-restaurants .restaurants-grid-cards .restaurant-card .vignette-nouveau {
+  width: 90px;
+  height: 30px;
+  background-color: #99E2D0;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  padding: 10px 13px;
+  border-radius: 3px;
+  position: absolute;
+  top: 13px;
+  right: 12px;
+}
+.bloc-restaurants .restaurants-grid-cards .restaurant-card .vignette-nouveau p {
+  font-weight: 600;
+  color: #2c9c81;
+}
 
 footer {
   background-color: #353535;
   padding: 25px 25px 35px;
 }
-footer .footer-nav a {
+footer .footer-nav ul {
+  list-style-type: none;
+}
+footer .footer-nav ul li {
+  margin-top: 12px;
+}
+footer .footer-nav ul li a {
   color: white;
 }
-footer .footer-nav a i {
-  padding: 10px;
+footer .footer-nav ul li a i {
   font-size: 12px;
+  width: 22px;
 }
-footer .footer-nav .logo {
+footer .footer-nav ul li .logo {
   width: 100px;
+  filter: invert(100%);
+}
+footer .footer-nav ul li:first-child {
+  margin-bottom: 15px;
+  margin-top: 5px;
 }
 
 main {
@@ -204,12 +309,32 @@ main {
   border-top-right-radius: 35px;
   padding: 30px 15px 45px;
 }
+.section-menu .container-menu .nom-restaurant {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 25px;
+  padding-left: 5px;
+  align-items: center;
+  margin-bottom: 40px;
+}
+.section-menu .container-menu .nom-restaurant .fa-heart {
+  font-size: 25px;
+  font-weight: 100;
+}
 .section-menu .container-menu ul {
   display: flex;
   flex-direction: column;
   list-style-type: none;
   gap: 15px;
   margin-bottom: 40px;
+}
+.section-menu .container-menu ul li .container-nom-plat-et-contenu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.section-menu .container-menu ul li .logo {
+  filter: saturate(50%);
 }
 .section-menu .container-menu ul li:not(:first-child) {
   background-color: white;
@@ -218,6 +343,7 @@ main {
   padding: 15px 25px 15px 12px;
   display: flex;
   justify-content: space-between;
+  box-shadow: 2px 2px 15px silver;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -8,6 +8,18 @@
     transition: all 0.3s ease 0s; /*effet de transition appliqué sur toutes les propriétés de toutes les balises*/
 }
 
+$violet: #9356DC;
+$rose: #FF79DA;
+$vert: #99E2D0;
+
+.icone {
+    color: grey;
+}
+
+.fa-mobile-alt {
+    font-size: 20px;
+}  
+
 a {
     text-decoration: none;
     color:#000;
@@ -15,8 +27,80 @@ a {
 
 
 body {
-    width: 375px;
     margin: 0 auto;
+    font-family: 'Roboto', sans-serif;
+}
+
+h1 { 
+    font-size: 24px;
+}
+
+.page-menu h1 {
+    font-family: 'Shrikhand', cursive;
+    font-size: 28px;
+}
+
+h2 { 
+    font-weight: 600;
+    font-size: 22px;
+
+}
+
+.page-menu h2 {
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+h3 {
+
+    font-size: 18px;
+}
+
+.page-menu h3 {
+    font-size: 16px;
+}
+
+p {
+    font-size: 16px;
+}
+
+.page-menu p {
+    font-size: 14px;
+}
+
+.prix {
+    font-weight: 600;
+}
+
+.container-prix{
+    display:flex;
+    align-items: flex-end;
+}
+
+hr {
+    width: 40px;
+    border: 2px solid $vert;
+    margin-top: 5px;
+}
+
+
+.button {
+    margin: 35px auto 0;
+    background: linear-gradient($rose, $violet);
+    padding: 20px 18px;
+    border-radius: 30px;
+    width: 220px;
+    text-align: center;
+    box-shadow: 0 2px 5px silver;   
+
+    span {
+        
+        color: white;
+        font-size: 16px;
+        font-weight: 500;
+         
+    }
 }
 
 header {
@@ -83,31 +167,7 @@ header {
 
     div:nth-child(2){
         margin-top: 20px;
-    }
-
-
-
-    a {
-        
-
-        div {
-            margin: 35px auto 0;
-            background-color: purple;
-            padding: 20px 18px;
-            border-radius: 30px;
-            width: 220px;
-
-            span {
-            
-                color: white;
-                font-size: 1.25rem;
-                
-            }
-        }
-    } 
-        
-
-        
+    }     
     
 }
 
@@ -120,11 +180,11 @@ header {
         gap: 20px;
 
         .fonctionnement-vignette {
-            width: 325px;
+            
             height: 72px;
             border-radius: 15px;
             box-shadow: 0 5px 15px -5px silver;
-            margin-left: auto;
+            margin-left: 13px;
             display: flex;
             align-items: center;
             position: relative;
@@ -135,7 +195,7 @@ header {
                 height: 25px;
                 width: 25px;
                 border-radius: 50px;
-                background-color: #9356DC;
+                background-color: $violet;
                 justify-content: center;
                 align-items: center;
                 position: absolute;
@@ -153,6 +213,16 @@ header {
                 display: flex;
                 flex-basis: 75px;
                 justify-content: center;
+            }
+        
+        }
+
+        .fonctionnement-vignette:hover {                                                                       background-color: #F6F6F6;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+        
+            background-color: lighten($violet, 35%);
+
+            .icone {
+                color: $violet;
             }
         
         }
@@ -175,6 +245,7 @@ header {
             flex-direction: column;
             height: 251px;
             border-radius: 10px;
+            position: relative;
 
             .restaurant-card-container-img {
                 height: calc(100% - 77px);
@@ -195,12 +266,15 @@ header {
                 height: 77px;
                 background-color: white;
                 display: flex;
-                padding: 20px 14px;
+                padding: 17px 14px;
                 border-bottom-left-radius: 10px;
                 border-bottom-right-radius: 10px;
 
                 .restaurant-card-info-container-text {
                     flex: 6;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
                 }
 
                 .restaurant-card-info-container-like {
@@ -208,6 +282,30 @@ header {
                     display: flex;
                     align-items: center;
                     justify-content: center;
+
+                    .fa-heart {
+                        font-size: 25px;
+                        font-weight: 100;
+                    }
+                }
+            }
+
+            .vignette-nouveau {
+                width: 90px;
+                height: 30px;
+                background-color: $vert;
+                display: flex;
+                align-items: center;
+                text-align: center;
+                padding: 10px 13px;
+                border-radius: 3px;
+                position: absolute;
+                top: 13px;
+                right: 12px;
+
+                p {
+                    font-weight: 600;
+                    color: darken($vert, 35%);
                 }
             }
         }
@@ -224,19 +322,39 @@ footer {
 
     .footer-nav {
 
-        a {
-            color: white;
+        ul{
 
-            i {
-                padding: 10px;
-                font-size: 12px;
+            list-style-type: none;
+            
+            li {
+
+                margin-top: 12px;
+
+                a {
+                    color: white;
+        
+                    i {
+                        font-size: 12px;
+                        width: 22px;
+                    }
+                    
+                }
+        
+                .logo {
+                    width: 100px;
+                    filter: invert(100%); 
+                }
+
+            }
+
+            li:first-child {
+                margin-bottom: 15px;
+                margin-top: 5px;
             }
             
         }
 
-        .logo {
-            width: 100px;
-        }
+        
     }
 }
 
@@ -270,12 +388,38 @@ main {
         border-top-right-radius: 35px;
         padding: 30px 15px 45px;
 
+        .nom-restaurant{
+            display: flex;
+            justify-content: space-between;
+            padding-right: 25px;
+            padding-left: 5px;
+            align-items: center;
+            margin-bottom: 40px;
+
+            .fa-heart {
+                font-size: 25px;
+                font-weight: 100;
+            }
+        }
+
         ul {
             display: flex;
             flex-direction: column;
             list-style-type: none;
             gap: 15px;
             margin-bottom: 40px;
+
+            li {
+                .container-nom-plat-et-contenu {
+                    display:flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                }
+
+                .logo {
+                    filter: saturate(50%);
+                }
+            }
 
             li:not(:first-child) {
                 background-color: white;
@@ -284,6 +428,7 @@ main {
                 padding: 15px 25px 15px 12px;
                 display: flex;
                 justify-content: space-between;
+                box-shadow: 2px 2px 15px silver;
                 
             }
 
