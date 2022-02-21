@@ -13,6 +13,10 @@
   color: grey;
 }
 
+.logo {
+  filter: saturate(50%);
+}
+
 .fa-mobile-alt {
   font-size: 20px;
 }
@@ -316,6 +320,9 @@ header .bloc-localisation .form-localisation .container-ville ::placeholder {
   font-weight: 600;
   color: #2c9c81;
 }
+.bloc-restaurants .restaurants-grid-cards a:hover .restaurant-card {
+  transform: scale(1.05);
+}
 .bloc-restaurants .restaurants-grid-cards a:hover .restaurant-card-container-info {
   background-color: #f2eafb;
 }
@@ -360,6 +367,9 @@ footer .footer-nav ul li a i {
 footer .footer-nav ul li a:hover {
   color: #f2eafb;
 }
+footer .footer-nav ul li:hover {
+  transform: scale(1.05);
+}
 
 main {
   display: flex;
@@ -392,9 +402,31 @@ main {
   align-items: center;
   margin-bottom: 40px;
 }
-.section-menu .container-menu .nom-restaurant .fa-heart {
+.section-menu .container-menu .nom-restaurant .heart-container {
+  position: relative;
+  cursor: pointer;
+}
+.section-menu .container-menu .nom-restaurant .heart-container div {
+  position: absolute;
+}
+.section-menu .container-menu .nom-restaurant .heart-container div .empty-heart {
   font-size: 25px;
   font-weight: 100;
+  opacity: 1;
+}
+.section-menu .container-menu .nom-restaurant .heart-container div {
+  position: absolute;
+}
+.section-menu .container-menu .nom-restaurant .heart-container div .full-heart {
+  font-size: 25px;
+  font-weight: 100;
+  color: #9356DC;
+  z-index: 2;
+  opacity: 0;
+}
+.section-menu .container-menu .nom-restaurant .heart-container:hover div .full-heart {
+  opacity: 1;
+  transition: 400ms ease-in-out;
 }
 .section-menu .container-menu .container-menu-grid {
   display: grid;
@@ -413,26 +445,250 @@ main {
   gap: 15px;
   margin-bottom: 40px;
 }
-.section-menu .container-menu .container-menu-grid ul li .container-nom-plat-et-contenu {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.section-menu .container-menu .container-menu-grid ul li .logo {
-  filter: saturate(50%);
-}
 .section-menu .container-menu .container-menu-grid ul li:not(:first-child) {
   background-color: white;
   border-radius: 10px;
   height: 70px;
-  padding: 15px 25px 15px 12px;
   display: flex;
   justify-content: space-between;
   box-shadow: 2px 2px 15px silver;
+  cursor: pointer;
+  transition: 0.5s;
+  animation: slideDown 2s;
+}
+.section-menu .container-menu .container-menu-grid ul li:not(:first-child) .container-plat-et-prix {
+  padding: 15px 25px 15px 12px;
+  display: flex;
+  flex: 1;
+}
+.section-menu .container-menu .container-menu-grid ul li:not(:first-child) .container-plat-et-prix .container-nom-plat-et-contenu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.section-menu .container-menu .container-menu-grid ul li:not(:first-child) .container-plat-et-prix .container-prix {
+  margin-left: auto;
+}
+.section-menu .container-menu .container-menu-grid ul li:not(:first-child) .container-check {
+  background-color: #99E2D0;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  display: flex;
+  width: 0;
+  align-items: center;
+  overflow: hidden;
+  transition-property: width;
+  transition-duration: 0.5s;
+}
+.section-menu .container-menu .container-menu-grid ul li:not(:first-child) .container-check .fa-check-circle {
+  margin-left: 20px;
+  color: white;
+  font-size: 20px;
+  transition-property: transform;
+  transition-duration: 0.5s;
+}
+@keyframes slideDown {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.section-menu .container-menu .container-menu-grid ul li:not(:first-child):hover .container-check, .section-menu .container-menu .container-menu-grid ul li:not(:first-child):active .container-check {
+  width: 60px;
+}
+.section-menu .container-menu .container-menu-grid ul li:not(:first-child):hover .container-check .fa-check-circle, .section-menu .container-menu .container-menu-grid ul li:not(:first-child):active .container-check .fa-check-circle {
+  transform: rotate(1turn);
 }
 @media (min-width: 768px) {
   .section-menu .container-menu .container-menu-grid .button {
     margin: 0 auto 0;
+  }
+}
+
+.page-spinner {
+  position: fixed;
+  background: #99E2D0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  animation: opacitySpinner 3s;
+  animation-iteration-count: 0;
+}
+@keyframes opacitySpinner {
+  0% {
+    opacity: 1;
+  }
+  67% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}
+
+.spinner {
+  width: 300px;
+  height: 300px;
+  margin: 0 auto;
+  text-align: center;
+}
+.spinner .logo {
+  width: 200px;
+  filter: invert(100%);
+}
+.spinner p {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: white;
+}
+.spinner .sk-circle {
+  margin: 40px auto;
+  width: 40px;
+  height: 40px;
+  position: relative;
+}
+.spinner .sk-circle .sk-child {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.spinner .sk-circle .sk-child:before {
+  content: "";
+  display: block;
+  margin: 0 auto;
+  width: 15%;
+  height: 15%;
+  background-color: white;
+  border-radius: 100%;
+  -webkit-animation: sk-circleBounceDelay 1.2s infinite ease-in-out both;
+  animation: sk-circleBounceDelay 1.2s infinite ease-in-out both;
+}
+.spinner .sk-circle .sk-circle2 {
+  -webkit-transform: rotate(30deg);
+  -ms-transform: rotate(30deg);
+  transform: rotate(30deg);
+}
+.spinner .sk-circle .sk-circle3 {
+  -webkit-transform: rotate(60deg);
+  -ms-transform: rotate(60deg);
+  transform: rotate(60deg);
+}
+.spinner .sk-circle .sk-circle4 {
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+.spinner .sk-circle .sk-circle5 {
+  -webkit-transform: rotate(120deg);
+  -ms-transform: rotate(120deg);
+  transform: rotate(120deg);
+}
+.spinner .sk-circle .sk-circle6 {
+  -webkit-transform: rotate(150deg);
+  -ms-transform: rotate(150deg);
+  transform: rotate(150deg);
+}
+.spinner .sk-circle .sk-circle7 {
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.spinner .sk-circle .sk-circle8 {
+  -webkit-transform: rotate(210deg);
+  -ms-transform: rotate(210deg);
+  transform: rotate(210deg);
+}
+.spinner .sk-circle .sk-circle9 {
+  -webkit-transform: rotate(240deg);
+  -ms-transform: rotate(240deg);
+  transform: rotate(240deg);
+}
+.spinner .sk-circle .sk-circle10 {
+  -webkit-transform: rotate(270deg);
+  -ms-transform: rotate(270deg);
+  transform: rotate(270deg);
+}
+.spinner .sk-circle .sk-circle11 {
+  -webkit-transform: rotate(300deg);
+  -ms-transform: rotate(300deg);
+  transform: rotate(300deg);
+}
+.spinner .sk-circle .sk-circle12 {
+  -webkit-transform: rotate(330deg);
+  -ms-transform: rotate(330deg);
+  transform: rotate(330deg);
+}
+.spinner .sk-circle .sk-circle2:before {
+  -webkit-animation-delay: -1.1s;
+  animation-delay: -1.1s;
+}
+.spinner .sk-circle .sk-circle3:before {
+  -webkit-animation-delay: -1s;
+  animation-delay: -1s;
+}
+.spinner .sk-circle .sk-circle4:before {
+  -webkit-animation-delay: -0.9s;
+  animation-delay: -0.9s;
+}
+.spinner .sk-circle .sk-circle5:before {
+  -webkit-animation-delay: -0.8s;
+  animation-delay: -0.8s;
+}
+.spinner .sk-circle .sk-circle6:before {
+  -webkit-animation-delay: -0.7s;
+  animation-delay: -0.7s;
+}
+.spinner .sk-circle .sk-circle7:before {
+  -webkit-animation-delay: -0.6s;
+  animation-delay: -0.6s;
+}
+.spinner .sk-circle .sk-circle8:before {
+  -webkit-animation-delay: -0.5s;
+  animation-delay: -0.5s;
+}
+.spinner .sk-circle .sk-circle9:before {
+  -webkit-animation-delay: -0.4s;
+  animation-delay: -0.4s;
+}
+.spinner .sk-circle .sk-circle10:before {
+  -webkit-animation-delay: -0.3s;
+  animation-delay: -0.3s;
+}
+.spinner .sk-circle .sk-circle11:before {
+  -webkit-animation-delay: -0.2s;
+  animation-delay: -0.2s;
+}
+.spinner .sk-circle .sk-circle12:before {
+  -webkit-animation-delay: -0.1s;
+  animation-delay: -0.1s;
+}
+@-webkit-keyframes sk-circleBounceDelay {
+  0%, 80%, 100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  40% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+@keyframes sk-circleBounceDelay {
+  0%, 80%, 100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  40% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
   }
 }
 
